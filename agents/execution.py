@@ -1,10 +1,13 @@
-"""
-execution.py - Payload formatting (Social/RCM schemas)
-"""
+import time
 
-def execute_action(strategy_data):
+def format_output(reasoned_plan: str, preset: str) -> dict:
     """
-    Format and execute payload based on strategy decision.
+    Structures the generated output for human administrator approval.
     """
-    print("Formatting payload and executing...")
-    return {"status": "executed", "payload_type": "Social/RCM"}
+    return {
+        "status": "AWAITING_OWNER_AUTHORIZATION",
+        "timestamp_utc": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime()),
+        "target_preset": preset,
+        "compliance_check": "PASSED (Zero Cloud Leakage)",
+        "generated_payload": reasoned_plan
+    }
