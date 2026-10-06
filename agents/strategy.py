@@ -27,8 +27,9 @@ def run_strategy(extracted_features: dict, preset: str) -> str:
             "flag prior-authorization needs, and format an HL7/FHIR validation summary."
         )
 
+    # Switched to the GPT-OSS 120B model supported on Groq's free Developer plan
     response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-120b",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"Input features: {extracted_features}"}
